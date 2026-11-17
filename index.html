@@ -1,0 +1,439 @@
+<title>Alfa Consulting</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: sticky white nav, sky-tinted hero with stats, light card sections, one bright-blue CTA band, soft footer.
+   Deliberately a single bright look (light only). */
+:root{
+  --bg:#ffffff; --sky:#eaf3ff; --sky-2:#d9e9ff; --ink:#0f1f3d; --muted:#51607a; --line:#dbe5f3;
+  --blue:#1d6bf3; --blue-d:#0f4fc4; --sun:#ffb938; --card:#ffffff; --chip:#eef4ff;
+  --display:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --text:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--text);margin:0}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.2;margin:0;text-wrap:balance}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.w{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:80px;scroll-margin-top:72px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d);background:var(--chip);padding:6px 12px;border-radius:99px}
+.head{text-align:center;max-width:640px;margin:0 auto 48px;display:grid;gap:14px;justify-items:center}
+.head h2{font-size:clamp(30px,4.4vw,44px)}
+.head p{margin:0;color:var(--muted)}
+em{font-style:normal;color:var(--blue)}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:60}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--blue);color:#fff;font-family:var(--display);font-size:19px}
+.logo span{font-weight:400}
+nav ul{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500}
+nav a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:13px 26px;font-weight:600;font-size:15px;border:1.5px solid transparent;cursor:pointer;font-family:inherit;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--blue);color:#fff;box-shadow:0 8px 22px -8px rgba(29,107,243,.65)}
+.btn-p:hover{background:var(--blue-d)}
+.btn-o{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-o:hover{background:var(--ink);color:#fff}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.nav .btn{padding:9px 20px}
+#menuBtn{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;cursor:pointer;color:var(--ink)}
+#mobile{display:none}
+
+/* hero */
+.hero{padding-block:84px 72px;background:radial-gradient(900px 420px at 85% -10%,#cfe3ff 0,transparent 70%),radial-gradient(600px 300px at 0% 100%,#fff1d3 0,transparent 70%),linear-gradient(180deg,var(--sky),#fff)}
+.hero .w{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(36px,5.4vw,60px);margin:20px 0 22px;line-height:1.12}
+.hero p.lead{max-width:540px;color:var(--muted);font-size:17px;margin:0 0 32px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:36px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line);flex-wrap:wrap}
+.stat b{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;display:block;margin-bottom:6px}
+.stat b sup{font-size:20px;color:var(--blue);vertical-align:baseline;margin-left:2px}
+.stat small{color:var(--muted);font-size:13px}
+.board{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 30px 60px -30px rgba(29,107,243,.35);min-width:0}
+.board h3{font-family:var(--text);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px}
+.pkgmini{display:grid;gap:10px}
+.pkgmini div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;background:var(--sky)}
+.pkgmini div:nth-child(2){background:var(--blue);color:#fff}
+.pkgmini b{font-weight:600}
+.pkgmini span{font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.board .tag{position:absolute;top:-14px;right:20px;background:var(--sun);color:var(--ink);font-size:12px;font-weight:700;padding:5px 12px;border-radius:99px}
+
+/* about */
+.about .w{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.chips{position:relative;height:340px;background:linear-gradient(135deg,var(--sky),#fff6e2);border-radius:28px;overflow:hidden;min-width:0}
+.chip{position:absolute;display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 18px;font-weight:600;font-size:14px;box-shadow:0 14px 30px -14px rgba(15,31,61,.35);animation:fl 6s ease-in-out infinite}
+.chip i{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;color:#fff;font-style:normal;font-size:16px}
+.chip:nth-child(1){left:8%;top:14%}.chip:nth-child(1) i{background:var(--blue)}
+.chip:nth-child(2){left:34%;top:42%;animation-delay:-2s}.chip:nth-child(2) i{background:#7c5cf0}
+.chip:nth-child(3){left:10%;top:70%;animation-delay:-4s}.chip:nth-child(3) i{background:#10a5b8}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.about h2{font-size:clamp(30px,4vw,42px);margin:16px 0 18px}
+.about p{color:var(--muted);margin:0 0 14px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;list-style:none;padding:0;margin:22px 0 0;font-size:14.5px;font-weight:500}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks li::before{content:"✓";flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--chip);color:var(--blue);font-size:12px;font-weight:700;margin-top:2px}
+
+/* services */
+.services{background:var(--sky)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;min-width:0;transition:transform .25s,box-shadow .25s,border-color .25s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(29,107,243,.45);border-color:#b9d1fa}
+.svc .ic{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--chip);color:var(--blue);margin-bottom:18px}
+.svc h3{font-size:22px;margin-bottom:8px}
+.svc p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.svc li{display:flex;gap:10px}
+.svc li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--sun);margin-top:9px}
+
+/* portfolio */
+.pf{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 26px 44px -26px rgba(15,31,61,.35)}
+.logo-tile{height:150px;display:grid;place-items:center;padding:16px;text-align:center;background:var(--tile,#f4f7fc)}
+.mark{font-weight:700;line-height:1.05;color:var(--mc,var(--ink));font-size:var(--ms,26px)}
+.mark small{display:block;font-size:.38em;letter-spacing:.22em;font-weight:600;margin-top:6px;text-transform:uppercase}
+.card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cat{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-d)}
+.card h3{font-size:21px}
+.card p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tags span{font-size:12px;font-weight:500;background:var(--chip);color:var(--ink);padding:4px 11px;border-radius:99px}
+.note{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* pricing */
+.pricing{background:linear-gradient(180deg,#fff,var(--sky))}
+.pk{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;min-width:0;position:relative}
+.plan.hot{border:2px solid var(--blue);box-shadow:0 26px 44px -26px rgba(29,107,243,.55)}
+.plan.hot::after{content:"Paling dipilih";position:absolute;top:-13px;left:22px;background:var(--blue);color:#fff;font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:99px}
+.plan h3{font-family:var(--text);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--blue-d)}
+.price{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.15;letter-spacing:-.02em}
+.price small{display:block;font-family:var(--text);font-size:13px;color:var(--muted);font-weight:400;margin-top:4px}
+.plan .for{margin:0;font-size:14px;color:var(--muted)}
+.plan ul{list-style:none;margin:6px 0 10px;padding:14px 0 0;border-top:1px solid var(--line);display:grid;gap:9px;font-size:13.5px;align-content:start;flex:1}
+.plan .btn{width:100%;padding:12px 16px;font-size:14px}
+.btn-wa{background:#25d366;color:#06361b;box-shadow:0 8px 20px -10px rgba(37,211,102,.8)}
+.btn-wa:hover{background:#1fbd5b}
+.plan:not(.hot) .btn-wa{background:#fff;color:#0a7a3a;border-color:#25d366;box-shadow:none}
+.plan:not(.hot) .btn-wa:hover{background:#25d366;color:#06361b}
+.pnote{margin:22px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+.plan li{display:flex;gap:9px}
+.plan li::before{content:"✓";color:var(--blue);font-weight:700}
+details.rates{margin-top:34px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+details.rates summary{cursor:pointer;list-style:none;padding:20px 26px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px}
+details.rates summary::-webkit-details-marker{display:none}
+details.rates summary::after{content:"+";font-size:24px;color:var(--blue);transition:transform .25s}
+details.rates[open] summary::after{transform:rotate(45deg)}
+.rbody{padding:4px 26px 26px;display:grid;grid-template-columns:repeat(2,1fr);gap:30px 40px}
+.rbody h4{margin:0 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-d)}
+.rbody table{width:100%;border-collapse:collapse;font-size:14px}
+.rbody td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.rbody td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:14px;font-weight:600}
+.terms{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;font-size:13.5px;color:var(--muted)}
+.terms b{display:block;color:var(--ink);margin-bottom:4px}
+
+/* cta + contact */
+.band{background:var(--blue);color:#fff;text-align:center;padding-block:72px}
+.band h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.band p{margin:0 auto 28px;max-width:520px;opacity:.9}
+.contact .w{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.cinfo{display:grid;gap:22px;margin-top:28px}
+.cinfo div{display:flex;gap:14px}
+.cinfo i{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--chip);color:var(--blue);font-style:normal}
+.cinfo b{display:block;font-size:14px}
+.cinfo span{color:var(--muted);font-size:15px;overflow-wrap:anywhere;user-select:all}
+.contact h2{font-size:clamp(30px,4vw,42px);margin:16px 0 8px}
+form{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;gap:14px;box-shadow:0 30px 50px -34px rgba(29,107,243,.4);min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:13px;font-weight:600}
+input,select,textarea{font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#f8fbff;color:var(--ink);width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);border-color:transparent;background:#fff}
+textarea{min-height:110px;resize:vertical}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+
+footer{background:var(--ink);color:#c9d6ee;padding-block:56px 28px;font-size:14px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer .logo{color:#fff;margin-bottom:12px}
+footer h4{color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a:hover{color:#fff}
+.copy{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:13px;opacity:.7}
+
+@media (max-width:960px){
+  section{padding-block:64px}
+  .hero .w,.about .w,.contact .w{grid-template-columns:1fr;gap:36px}
+  .pk{grid-template-columns:repeat(2,1fr)}
+  .rbody{grid-template-columns:1fr}
+  .terms{grid-template-columns:1fr}
+  nav ul{display:none}
+  #menuBtn{display:grid;place-items:center}
+  #mobile.open{display:grid;gap:2px;padding:8px 0 16px}
+  #mobile a{padding:11px 4px;font-weight:500;border-bottom:1px solid var(--line)}
+  .fg{grid-template-columns:1fr 1fr}
+  .fg>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .grid2,.pk,.row,.checks{grid-template-columns:1fr}
+  .hero{padding-block:48px}
+  .stats{gap:26px}
+  .chips{height:300px}
+  .chip:nth-child(2){left:26%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header>
+  <div class="w">
+    <div class="nav">
+      <a class="logo" href="#home" aria-label="Alfa Consulting"><b>A</b>ALFA<span>CONSULTING</span></a>
+      <nav aria-label="Utama">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#tarif">Tarif</a></li>
+          <li><a class="btn btn-p" href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+    </div>
+    <div id="mobile">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#tarif">Tarif</a><a href="#contact" style="color:var(--blue);font-weight:600">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="w">
+    <div>
+      <span class="eyebrow">Business Consulting Excellence</span>
+      <h1>Membangun Bisnis <em>Lebih Kuat</em> Bersama Kami</h1>
+      <p class="lead">Alfa Consulting adalah mitra strategis Anda dalam konsultasi Keuangan, Pajak, Operasional, hingga Human Resources. Kami membantu bisnis tumbuh dengan solusi yang terukur dan berkelanjutan.</p>
+      <div class="cta-row">
+        <a class="btn btn-p" href="#services">Layanan Kami</a>
+        <a class="btn btn-o" href="#portfolio">Lihat Portfolio</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>8<sup>+</sup></b><small>Brand Partners</small></div>
+        <div class="stat"><b>4<sup>+</sup></b><small>Bidang Konsultasi</small></div>
+        <div class="stat"><b>100<sup>%</sup></b><small>Komitmen</small></div>
+      </div>
+    </div>
+    <aside class="board" aria-label="Ringkasan paket bulanan">
+      <span class="tag">Retainer bulanan</span>
+      <h3>Paket layanan mulai dari</h3>
+      <div class="pkgmini">
+        <div><b>Starter</b><span>Rp3,5 jt / bln</span></div>
+        <div><b>Business</b><span>Rp6,5 jt / bln</span></div>
+        <div><b>Corporate</b><span>Rp10 jt / bln</span></div>
+        <div><b>Enterprise</b><span>Mulai Rp15 jt / bln</span></div>
+      </div>
+      <p class="hint" style="margin-top:14px">Akuntansi • Pajak • Financial Advisory</p>
+    </aside>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="w">
+    <div class="chips" aria-hidden="true">
+      <div class="chip"><i>◆</i>Strategic Planning</div>
+      <div class="chip"><i>●</i>Team Building</div>
+      <div class="chip"><i>▲</i>Growth Analytics</div>
+    </div>
+    <div>
+      <span class="eyebrow">Tentang Kami</span>
+      <h2>Partner Terpercaya untuk <em>Pertumbuhan Bisnis</em> Anda</h2>
+      <p>Alfa Consulting hadir sebagai konsultan bisnis profesional yang siap membantu perusahaan Anda mencapai potensi maksimal. Dengan pengalaman luas di berbagai industri, kami menawarkan pendekatan holistik dalam mengelola aspek keuangan, perpajakan, operasional, dan sumber daya manusia.</p>
+      <p>Kami percaya bahwa setiap bisnis memiliki keunikan tersendiri. Karena itu, solusi yang kami tawarkan selalu disesuaikan dengan kebutuhan dan karakteristik masing-masing klien.</p>
+      <ul class="checks">
+        <li>Pendekatan berbasis data</li>
+        <li>Solusi yang terukur &amp; berkelanjutan</li>
+        <li>Tim konsultan berpengalaman</li>
+        <li>Dukungan multi-industri</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Layanan Kami</span>
+      <h2>Solusi Konsultasi <em>Terintegrasi</em></h2>
+      <p>Kami menyediakan layanan konsultasi menyeluruh untuk mendukung setiap aspek bisnis Anda.</p>
+    </div>
+    <div class="grid2" id="svcList"></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Portfolio</span>
+      <h2>Brand yang Kami <em>Tangani</em></h2>
+      <p>Berbagai brand dari industri yang beragam telah mempercayakan pengelolaan bisnisnya kepada kami.</p>
+    </div>
+    <div class="pf" id="pfList"></div>
+  </div>
+</section>
+
+<section class="pricing" id="tarif">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Tarif Layanan</span>
+      <h2>Paket Bulanan yang <em>Jelas</em></h2>
+      <p>Pilih paket sesuai volume transaksi dan kompleksitas bisnis Anda. Tarif final disesuaikan setelah diskusi awal.</p>
+    </div>
+    <div class="pk" id="pkList"></div>
+    <p class="pnote">Klik tombol WhatsApp pada paket pilihan Anda. Pesan akan terisi otomatis dengan nama paket, harga, dan cakupannya.</p>
+
+    <details class="rates">
+      <summary>Lihat rate card lengkap per layanan</summary>
+      <div class="rbody" id="rateBody"></div>
+    </details>
+
+    <div class="terms">
+      <div><b>Penentuan tarif</b>Disesuaikan dengan volume transaksi, jumlah rekening bank, karyawan, entitas/cabang, kompleksitas perpajakan, kondisi pembukuan, dan ruang lingkup.</div>
+      <div><b>Di luar paket</b>SPT Tahunan Badan, pembenahan pembukuan periode sebelumnya, implementasi software akuntansi, pemeriksaan pajak, biaya administrasi pemerintah dan pihak ketiga dapat dikenakan biaya terpisah.</div>
+      <div><b>Pembayaran</b>Retainer dibayar 100% di awal periode layanan. Proyek khusus: 50% uang muka dan pelunasan berdasarkan milestone yang disepakati.</div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="w">
+    <h2>Siap Membawa Bisnis Anda ke Level Selanjutnya?</h2>
+    <p>Konsultasikan kebutuhan bisnis Anda bersama tim ahli kami. Kami siap membantu Anda merancang strategi terbaik.</p>
+    <a class="btn btn-sun" href="#contact">Hubungi Kami Sekarang</a>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="w">
+    <div>
+      <span class="eyebrow">Hubungi Kami</span>
+      <h2>Mari <em>Berdiskusi</em></h2>
+      <p style="color:var(--muted);margin:0">Ceritakan kebutuhan bisnis Anda dan kami akan membantu menemukan solusi terbaik.</p>
+      <div class="cinfo">
+        <div><i>⌖</i><p style="margin:0"><b>Alamat</b><span>Jl. Garunggang Kuron No. 23, Kota Bandung</span></p></div>
+        <div><i>✉</i><p style="margin:0"><b>Email</b><span>yanita.pajakresto@gmail.com</span></p></div>
+        <div><i>☎</i><p style="margin:0"><b>Telepon</b><span>+62 858 0390 9663</span></p></div>
+      </div>
+    </div>
+    <form id="cf" autocomplete="on">
+      <div class="row">
+        <label for="nama">Nama Lengkap<input id="nama" name="nama" placeholder="Nama Lengkap" required></label>
+        <label for="email">Email<input id="email" name="email" type="email" placeholder="Email"></label>
+      </div>
+      <label for="usaha">Perusahaan<input id="usaha" name="usaha" placeholder="Perusahaan"></label>
+      <label for="layanan">Layanan
+        <select id="layanan" name="layanan">
+          <option>Pilih Layanan</option><option>Jasa Keuangan</option><option>Pembukuan / Akuntansi</option><option>Jasa Perpajakan</option><option>Konsultasi Operasional</option><option>Konsultasi HR</option><option>Layanan Tambahan</option><option>Paket Lengkap</option>
+        </select>
+      </label>
+      <label for="pesan">Pesan<textarea id="pesan" name="pesan" placeholder="Ceritakan kebutuhan Anda..."></textarea></label>
+      <a class="btn btn-p" id="wa" href="https://wa.me/6285803909663" target="_blank" rel="noopener noreferrer">Kirim Pesan via WhatsApp</a>
+      <p class="hint">Tombol membuka WhatsApp dengan pesan yang sudah terisi dari formulir ini.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div class="fg">
+      <div>
+        <a class="logo" href="#home"><b>A</b>ALFA<span>CONSULTING</span></a>
+        <p style="margin:0;max-width:320px">Mitra strategis Anda dalam konsultasi Keuangan, Pajak, Operasional, dan HR.</p>
+      </div>
+      <div><h4>Quick Links</h4><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#tarif">Tarif</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Services</h4><ul><li>Keuangan</li><li>Pajak</li><li>Operasional</li><li>Human Resources</li></ul></div>
+    </div>
+    <div class="copy">© 2026 Alfa Consulting. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const ic={
+ fin:'<path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/>',
+ tax:'<path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/>',
+ ops:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2"/>',
+ hr:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 11a3 3 0 1 0 0-6M17 14c2.5.4 4 2.5 4 6"/>',
+ book:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h6"/>',
+ star:'<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>'
+};
+const services=[
+ ['fin','Jasa Keuangan','Fokus pada pengelolaan dan strategi keuangan bisnis, dari perencanaan anggaran hingga konsultasi investasi dan ekspansi usaha.',['Penyusunan anggaran (budgeting)','Manajemen arus kas (cash flow)','Analisis kinerja keuangan','Financial modeling & proyeksi keuangan','Konsultasi investasi & ekspansi usaha','Penyusunan laporan keuangan untuk investor/bank']],
+ ['tax','Jasa Perpajakan','Fokus pada kepatuhan dan efisiensi pajak, mulai dari perhitungan, pelaporan, hingga pendampingan pemeriksaan pajak.',['Perhitungan pajak (PPh & PPN)','Pelaporan SPT Masa & Tahunan','Tax planning & tax review','Pendampingan pemeriksaan pajak','Konsultasi perpajakan','Pengurusan NPWP & administrasi pajak']],
+ ['ops','Operasional','Optimasi proses bisnis, peningkatan efisiensi operasional, manajemen supply chain, dan implementasi sistem manajemen mutu.',['Process Optimization','Supply Chain Management','Quality Management System']],
+ ['hr','Human Resources','Manajemen SDM strategis, pengembangan organisasi, rekrutmen & seleksi, pelatihan, serta desain kompensasi & benefit.',['HR Strategy & Organization Design','Talent Acquisition & Development','Compensation & Benefits']],
+ ['book','Pembukuan / Akuntansi','Fokus pada pencatatan dan penyajian laporan keuangan yang akurat, sesuai standar PSAK, untuk mendukung keputusan bisnis dan kepatuhan.',['Penyusunan & review laporan keuangan (neraca, laba rugi, arus kas) sesuai PSAK','Rekonsiliasi bank','Pembukuan harian (general ledger)','Penyusunan laporan keuangan untuk investor/bank','Jasa Audit Internal','Setup sistem akuntansi & pendampingan audit']],
+ ['star','Layanan Tambahan','Layanan pelengkap untuk mendukung operasional bisnis secara menyeluruh, dari penggajian hingga digitalisasi sistem keuangan.',['Payroll & perhitungan PPh 21','Konsultasi efisiensi biaya & SOP keuangan','Pembuatan SOP Akuntansi & Keuangan','Digitalisasi & implementasi software akuntansi']]
+];
+document.getElementById('svcList').innerHTML=services.map(s=>`<article class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ic[s[0]]}</svg></div><h3>${s[1]}</h3><p>${s[2]}</p><ul>${s[3].map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+
+/* Logo tiles are typographic placeholders; swap in real logo files via <img> when available. */
+const pf=[
+ {n:'Latteria Gelato & Dessert Bar',c:'F&B · Gelato & Dessert Bar',m:'latteria',s:'Gelato & Dessert Bar',mc:'#1c1c1c',t:'#f6f2ea',d:'Konsultasi menyeluruh untuk brand premium gelato & dessert bar, meliputi pengelolaan keuangan, optimalisasi operasional, dan strategi pengembangan bisnis.',g:['Keuangan','Operasional','HR']},
+ {n:'Shabughin',c:'F&B · Japanese Restaurant',m:'しゃぶ銀',s:'Shabu Ghin',mc:'#1c1c1c',t:'#fbf3f3',d:'Pendampingan bisnis restoran Jepang dalam aspek perpajakan, pengelolaan keuangan, dan efisiensi operasional dapur & layanan.',g:['Pajak','Keuangan','Operasional']},
+ {n:'Cici Gelato',c:'F&B · Gelato',m:'CHI CHI',s:'Gelato',mc:'#d3262f',t:'#fff1f1',d:'Konsultasi untuk brand gelato dengan fokus pada manajemen keuangan, strategi pajak efisien, serta pengembangan tim dan SDM.',g:['Keuangan','Pajak','HR']},
+ {n:'La Casa Gelato',c:'F&B · Gelato',m:'la casa gelato',s:'',mc:'#14907f',t:'#eaf8f5',ms:'24px',d:'Pendampingan komprehensif untuk La Casa Gelato dalam hal perencanaan keuangan, kepatuhan pajak, dan peningkatan operasional.',g:['Keuangan','Pajak','Operasional']},
+ {n:'CV. Jaya Sakti',c:'Hotel Supplier & General Trade',m:'JS',s:'Jaya Sakti',mc:'#0f4a6b',t:'#e8f3f8',d:'Konsultasi bisnis untuk perusahaan hotel supplier & general trade, termasuk pengelolaan pajak, keuangan, dan manajemen operasional distribusi.',g:['Pajak','Keuangan','Operasional','HR']},
+ {n:'CV. Hakka Putra Plasindo',c:'Trading & Distribution',m:'HAKKA',s:'Putra Plasindo',mc:'#1e4fa3',t:'#eef3fc',d:'Konsultasi bisnis untuk perusahaan trading & distribusi, meliputi pengelolaan pajak, keuangan, dan manajemen operasional bisnis secara menyeluruh.',g:['Pajak','Keuangan','Operasional']},
+ {n:'Callahijab',c:'Fashion · Hijab & Modest Wear',m:'CALLA',s:'Hijab',mc:'#fff',t:'#b07cd0',d:'Pendampingan bisnis fashion muslim dalam aspek keuangan, perpajakan, dan pengembangan tim untuk mendukung pertumbuhan brand secara berkelanjutan.',g:['Keuangan','Pajak','HR']},
+ {n:'PT. Doa Boga Sejahtera',c:'F&B · Vicaris',m:'DOA BOGA',s:'Sejahtera',mc:'#7a5a12',t:'#fdf3dc',d:'Pendampingan keuangan, perpajakan, dan tata kelola operasional untuk grup F&B di bawah Vicaris.',g:['Keuangan','Pajak','Operasional']}
+];
+document.getElementById('pfList').innerHTML=pf.map(p=>`<article class="card"><div class="logo-tile" style="--tile:${p.t};--mc:${p.mc};--ms:${p.ms||'28px'}"><div class="mark" style="${p.f?`font-family:${p.f}`:''}">${p.m}${p.s?`<small>${p.s}</small>`:''}</div></div><div class="body"><span class="cat">${p.c}</span><h3>${p.n}</h3><p>${p.d}</p><div class="tags">${p.g.map(x=>`<span>${x}</span>`).join('')}</div></div></article>`).join('');
+
+const plans=[
+ ['Starter','Rp3.500.000','Cocok untuk UMKM dan perusahaan skala kecil.',['Bookkeeping maks. 100 transaksi/bulan','Rekonsiliasi bank','Laporan laba rugi dan neraca','Konsultasi administrasi pajak','Tax compliance sesuai ruang lingkup kontrak']],
+ ['Business','Rp6.500.000','Cocok untuk perusahaan yang sedang berkembang.',['Bookkeeping maks. 250 transaksi/bulan','Rekonsiliasi bank & laporan keuangan lengkap','Tax compliance bulanan & monitoring kewajiban pajak','Monthly financial review','Konsultasi pajak 2 kali/bulan'],1],
+ ['Corporate','Rp10.000.000','Cocok untuk transaksi dan kebutuhan pelaporan yang lebih kompleks.',['Bookkeeping maks. 500 transaksi/bulan','Full financial reporting & rekonsiliasi bank','Tax compliance bulanan','Tax planning dasar','Financial performance analysis','Monthly management report','Konsultasi 4 kali/bulan']],
+ ['Enterprise','Rp15.000.000','Cocok untuk perusahaan multi-entitas atau multi-cabang.',['Accounting management','Consolidated financial reporting','Tax compliance multi-entitas','Tax planning dan advisory','Budgeting dan forecasting','Management reporting','Pendampingan manajemen'],0,'Mulai ']
+];
+const waMsg=p=>'https://wa.me/6285803909663?text='+encodeURIComponent(
+`Halo Alfa Consulting, saya tertarik dengan paket layanan bulanan berikut:
+
+Paket: ${p[0]}
+Harga: ${p[5]||''}${p[1]} / bulan
+Cakupan:
+${p[3].map(x=>'- '+x).join('\n')}
+
+Mohon informasi lebih lanjut dan jadwal konsultasinya. Terima kasih.`);
+document.getElementById('pkList').innerHTML=plans.map(p=>`<article class="plan${p[4]?' hot':''}"><h3>${p[0]}</h3><div class="price">${p[5]||''}${p[1]}<small>per bulan</small></div><p class="for">${p[2]}</p><ul>${p[3].map(x=>`<li>${x}</li>`).join('')}</ul><a class="btn btn-wa" href="${waMsg(p)}" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.300 1.200-1.800 1.200-.5.1-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>Pilih &amp; Chat WhatsApp</a></article>`).join('');
+
+const rates=[
+ ['Accounting & Bookkeeping',[['Basic Bookkeeping','Rp1,5–2,5 jt / bln'],['Standard Accounting','Rp3–5 jt / bln'],['Professional Accounting','Rp5–8 jt / bln'],['Full Accounting Management','Rp8–15 jt / bln']]],
+ ['Tax Compliance',[['SPT Tahunan Orang Pribadi','Rp500 rb–1 jt'],['SPT Tahunan Badan','Rp2,5–5 jt'],['PPh 21 bulanan','Rp500 rb–1,5 jt / bln'],['PPh 23 bulanan','Rp500 rb–1 jt / bln'],['PPh Final bulanan','Rp500 rb–1 jt / bln'],['PPN bulanan (untuk PKP)','Rp1–2 jt / bln'],['Tax Compliance Package','Rp2,5–5 jt / bln']]],
+ ['Tax Planning & Advisory',[['Tax Health Check','Rp3–5 jt'],['Tax Review','Rp5–10 jt'],['Tax Planning','Rp7,5–15 jt'],['Tax Risk Assessment','Rp5–12 jt'],['Tax Diagnostic & Recommendation','Rp10–20 jt'],['Tax Audit Assistance','Rp5–15 jt']]],
+ ['Financial Advisory',[['Financial Statement Review','Rp3–5 jt'],['Financial Analysis','Rp3–7,5 jt'],['Budgeting & Forecasting','Rp5–10 jt'],['Financial Management Consulting','Rp5–12 jt'],['Internal Control Review','Rp7,5–15 jt']]]
+];
+document.getElementById('rateBody').innerHTML=rates.map(r=>`<div><h4>${r[0]}</h4><table>${r[1].map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join('')}</table></div>`).join('');
+
+/* mobile menu */
+const mb=document.getElementById('menuBtn'),mm=document.getElementById('mobile');
+mb.addEventListener('click',()=>{const o=mm.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+mm.addEventListener('click',e=>{if(e.target.tagName==='A'){mm.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+/* contact form -> WhatsApp link */
+const f=document.getElementById('cf'),wa=document.getElementById('wa');
+function upd(){
+  const v=id=>f.elements[id].value.trim();
+  const lay=v('layanan')==='Pilih Layanan'?'':v('layanan');
+  const t=['Halo Alfa Consulting,',v('nama')&&`Nama: ${v('nama')}`,v('usaha')&&`Perusahaan: ${v('usaha')}`,v('email')&&`Email: ${v('email')}`,lay&&`Layanan: ${lay}`,v('pesan')&&`\n${v('pesan')}`].filter(Boolean).join('\n');
+  wa.href='https://wa.me/6285803909663?text='+encodeURIComponent(t);
+}
+f.addEventListener('input',upd);f.addEventListener('change',upd);f.addEventListener('submit',e=>e.preventDefault());upd();
+</script>
